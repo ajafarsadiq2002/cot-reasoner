@@ -1,6 +1,6 @@
 # CoT Reasoner
 
-A Python Chain of Thought (CoT) reasoning library with multi-provider LLM support.
+A Python Chain of Thought (CoT) reasoning library with multi-provider LLM Support.
 
 ## What is Chain of Thought Reasoning?
 
