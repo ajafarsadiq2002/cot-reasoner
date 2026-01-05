@@ -174,23 +174,31 @@ API documentation: http://localhost:8000/docs
 
 ## Reasoning Strategies
 
+> **Detailed Guide:** See [docs/COT_STRATEGIES_EXPLAINED.md](docs/COT_STRATEGIES_EXPLAINED.md) for in-depth explanations with examples and diagrams.
+
 ### Standard CoT
-Explicit step-by-step prompting with numbered reasoning steps.
+Like following a recipe book - explicit step-by-step prompting with numbered reasoning steps.
 ```python
 reasoner = Reasoner(strategy="standard")
 ```
 
 ### Zero-Shot CoT
-Minimal prompting with just "Let's think step by step".
+Just add "Let's think step by step" - minimal prompting that triggers reasoning.
 ```python
 reasoner = Reasoner(strategy="zero_shot")
 ```
 
 ### Self-Consistency
-Generates multiple reasoning paths and uses majority voting.
+Ask multiple times and trust the majority - generates multiple reasoning paths and uses majority voting for higher accuracy.
 ```python
 reasoner = Reasoner(strategy="self_consistency", num_samples=5)
 ```
+
+| Strategy | API Calls | Best For |
+|----------|-----------|----------|
+| Standard | 1 | Structured output, most problems |
+| Zero-Shot | 1 | Quick queries, simple reasoning |
+| Self-Consistency | N | High-stakes decisions, complex problems |
 
 ## Extending
 
@@ -261,6 +269,8 @@ cot_reasoner/
 │   ├── cli.py               # CLI application
 │   ├── api.py               # REST API
 │   └── db.py                # SQLite database
+├── docs/                    # Documentation
+│   └── COT_STRATEGIES_EXPLAINED.md
 ├── data/                    # SQLite database storage
 └── tests/
 ```
